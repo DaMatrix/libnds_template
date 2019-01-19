@@ -1,0 +1,11 @@
+.idea/
+*.iml
+*.ipr
+*.class
+*.log
+
+build/
+cmake-build-debug/
+
+*.elf
+*.nds
