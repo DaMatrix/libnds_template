@@ -4,5 +4,6 @@
 #include <nds.h>
 
 #include <stdio.h>
+#include <string>
 
 #endif //DS_TEST_1_MAIN_H

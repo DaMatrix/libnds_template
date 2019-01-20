@@ -1,11 +1,18 @@
+#clion things
 .idea/
 *.iml
 *.ipr
 *.class
 *.log
 
+#(c)make output
 build/
 cmake-build-debug/
 
+#build artifacts
 *.elf
 *.nds
+
+#helper scripts because clion can be dumb at times
+/ds-test-1
+/libnds_template
