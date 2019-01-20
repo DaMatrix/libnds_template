@@ -25,11 +25,11 @@ BUILD		   := build
 SOURCES		   := source
 DATA		   := data
 INCLUDES	   := include
-FONTS   	   := gfx/fonts
-SPRITES	       := gfx/sprites/64x64 gfx/sprites/8x8 gfx/sprites/32x32 gfx/sprites/16x16
-TILEMAPS       := gfx/tilemaps
-SOUNDS         := sounds
-SOUNDBANK_NAME := soundbank
+#FONTS   	   := gfx/fonts
+#SPRITES	       := gfx/sprites/64x64 gfx/sprites/8x8 gfx/sprites/32x32 gfx/sprites/16x16
+#TILEMAPS       := gfx/tilemaps
+#SOUNDS         := sounds
+#SOUNDBANK_NAME := soundbank
 #GAME_ICON      := ../icon.bmp
 GAME_TITLE     := ds-test-1
 GAME_SUBTITLE1 := https://daporkchop.net
@@ -77,10 +77,10 @@ export OUTPUT	:=	$(CURDIR)/$(TARGET)
 
 export VPATH	:=	$(foreach dir,$(SOURCES),$(CURDIR)/$(dir)) \
 					$(foreach dir,$(DATA),$(CURDIR)/$(dir)) \
-					$(foreach dir,$(FONTS),$(CURDIR)/$(dir)) \
-					$(foreach dir,$(SPRITES),$(CURDIR)/$(dir)) \
-					$(foreach dir,$(TILEMAPS),$(CURDIR)/$(dir)) \
-					$(foreach dir,$(SOUNDS),$(CURDIR)/$(dir)) \
+#					$(foreach dir,$(FONTS),$(CURDIR)/$(dir)) \
+#					$(foreach dir,$(SPRITES),$(CURDIR)/$(dir)) \
+#					$(foreach dir,$(TILEMAPS),$(CURDIR)/$(dir)) \
+#					$(foreach dir,$(SOUNDS),$(CURDIR)/$(dir)) \
 
 export DEPSDIR	:=	$(CURDIR)/$(BUILD)
 
@@ -91,11 +91,11 @@ export DEPSDIR	:=	$(CURDIR)/$(BUILD)
 CFILES		:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.c)))
 CPPFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.cpp)))
 SFILES		:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.s)))
-BINFILES	:=	$(foreach dir,$(DATA),$(notdir $(wildcard $(dir)/*))) $(SOUNDBANK_NAME).bin
-SPRITE_FILES	:=	$(foreach dir,$(FONTS),$(notdir $(wildcard $(dir)/*.png))) \
-					$(foreach dir,$(SPRITES),$(notdir $(wildcard $(dir)/*.png)))
-TILEMAP_FILES	:=	$(foreach dir,$(TILEMAPS),$(notdir $(wildcard $(dir)/*.png)))
-AUDIOFILES	:=	$(foreach dir,$(SOUNDS),$(notdir $(wildcard $(dir)/*)))
+BINFILES	:=	$(foreach dir,$(DATA),$(notdir $(wildcard $(dir)/*)))# $(SOUNDBANK_NAME).bin
+#SPRITE_FILES	:=	$(foreach dir,$(FONTS),$(notdir $(wildcard $(dir)/*.png))) \
+#					$(foreach dir,$(SPRITES),$(notdir $(wildcard $(dir)/*.png)))
+#TILEMAP_FILES	:=	$(foreach dir,$(TILEMAPS),$(notdir $(wildcard $(dir)/*.png)))
+#AUDIOFILES	:=	$(foreach dir,$(SOUNDS),$(notdir $(wildcard $(dir)/*)))
 
 
 #---------------------------------------------------------------------------------
@@ -114,12 +114,11 @@ endif
 
 export OFILES	:=	$(addsuffix .o,$(BINFILES)) \
 					$(BMPFILES:.bmp=.o) \
-					$(SPRITE_FILES:.png=.o) \
-					$(TILEMAP_FILES:.png=.o) \
+#					$(SPRITE_FILES:.png=.o) \
+#					$(TILEMAP_FILES:.png=.o) \
 					$(CPPFILES:.cpp=.o) $(CFILES:.c=.o) $(SFILES:.s=.o)
 
-export AUDIOFILES       :=      $(foreach dir,$(SOUNDS),$(notdir $(wildcard $(dir)/*)))
-
+#export AUDIOFILES       :=      $(foreach dir,$(SOUNDS),$(notdir $(wildcard $(dir)/*)))
 
 export INCLUDE	:=	$(foreach dir,$(INCLUDES),-I$(CURDIR)/$(dir)) \
 					$(foreach dir,$(LIBDIRS),-I$(dir)/include) \
@@ -138,7 +137,6 @@ $(BUILD):
 clean:
 	@echo clean ...
 	@rm -fr $(BUILD) $(TARGET).elf $(TARGET).nds $(TARGET).ds.gba
-
 
 #---------------------------------------------------------------------------------
 else
@@ -204,12 +202,10 @@ $(OUTPUT).elf	:	$(OFILES)
 # mmutil takes all audio files in the audio folder and puts them into a
 # soundbank file.
 #---------------------------------------------------------------------------------
-$(SOUNDBANK_NAME).bin : $(AUDIOFILES)
+#$(SOUNDBANK_NAME).bin : $(AUDIOFILES)
 #---------------------------------------------------------------------------------
-	@echo $(notdir $^)
-	@mmutil -d $^ -o$(SOUNDBANK_NAME).bin -h$(SOUNDBANK_NAME).h
-
-
+#	@echo $(notdir $^)
+#	@mmutil -d $^ -o$(SOUNDBANK_NAME).bin -h$(SOUNDBANK_NAME).h
 
 -include $(DEPENDS)
 

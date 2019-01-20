@@ -1,7 +1,11 @@
-# That file is here only to make IDE's happy so they could index all source files.
-# Real building happens through Makefile.
-
 cmake_minimum_required(VERSION 3.9)
+
+#if (UNIX OR WIN32 OR CYGWIN OR MSYS OR MINGW)
+    #manually set compiler paths because clion is dumb
+#    set(CMAKE_C_COMPILER $ENV{DEVKITARM}/bin/arm-none-eabi-gcc.exe)
+#    set(CMAKE_CXX_COMPILER $ENV{DEVKITARM}/bin/arm-none-eabi-g++.exe)
+#endif (UNIX OR WIN32 OR CYGWIN OR MSYS OR MINGW)
+
 project(ds-test-1)
 
 set(CMAKE_CXX_STANDARD 14)

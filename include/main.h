@@ -3,4 +3,6 @@
 
 #include <nds.h>
 
+#include <stdio.h>
+
 #endif //DS_TEST_1_MAIN_H

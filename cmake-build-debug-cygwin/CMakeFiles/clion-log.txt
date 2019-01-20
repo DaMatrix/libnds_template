@@ -1,0 +1,3 @@
+C:\devkitPro\msys2\usr\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=C:/devkitPro/msys2/usr/bin/make.exe -DCMAKE_C_COMPILER=C:/devkitPro/devkitARM/bin/arm-none-eabi-gcc.exe -DCMAKE_CXX_COMPILER=C:/devkitPro/devkitARM/bin/arm-none-eabi-g++.exe -G "CodeBlocks - Unix Makefiles" /cygdrive/z/SharedIDE/NDS/ds-test-1
+CMake Error: The source directory "/cygdrive/z/SharedIDE/NDS/ds-test-1" does not exist.
+Specify --help for usage, or press the help button on the CMake GUI.
